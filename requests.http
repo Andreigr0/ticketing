@@ -1,0 +1,70 @@
+@baseUrl = https://ticketing.dev/api
+@contentType = application/json
+@ticketId = 603ebd694a31b3001bb65def
+
+### 
+POST {{baseUrl}}/payments
+Content-Type: application/json
+
+{}
+
+### @name createTicket
+POST {{baseUrl}}/tickets
+Content-Type: application/json
+
+{
+    "title": "Some ticket",
+    "price": 35.9
+}
+
+###
+GET {{baseUrl}}/tickets
+
+### @name getTicket
+GET {{baseUrl}}/tickets/{{ticketId}}
+
+### @name updateTicket
+PUT {{baseUrl}}/tickets/{{ticketId}}
+Content-Type: {{contentType}}
+
+{
+    "title": "UPDATE TO V5!!!",
+    "price": 69.99
+}
+
+
+### @name createOrder
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "ticketId": "{{ticketId}}"
+}
+
+### 
+GET {{baseUrl}}/orders
+
+
+
+### @name signup
+POST {{baseUrl}}/users/signup
+Content-Type: {{contentType}}
+
+{
+    "email": "test1234@email.com",
+    "password": "pass"
+}
+
+### @name signin
+POST {{baseUrl}}/users/signin
+Content-Type: {{contentType}}
+Cookie: foo=bar
+
+{
+    "email": "test1234@email.com",
+    "password": "pass"
+}
+
+### @name currentUser
+GET {{baseUrl}}/users/currentuser
+Content-Type: {{contentType}}
